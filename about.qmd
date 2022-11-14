@@ -1,0 +1,15 @@
+---
+title: "About me"
+---
+
+My name is Siqi Chen. I am a 3rd year [BCMB](https://bcmb.bs.jhmi.edu) PhD candidate at the Johns Hopkins School of Medicine. I am interested in applying molecular biology and genomics tools to explore and understand gene regulatory mechanisms underlying development and human diseases.
+
+Before starting my PhD, I graduated from Vanderbilt University, where I studied the molecular mechanism underlying synaptic elimination using [*C. elegans*](http://www.wormbook.org) as a model organism in the [Miller lab](https://lab.vanderbilt.edu/miller-lab/members/).
+
+------------------------------------------------------------------------
+
+## Education
+
+**Ph.D. in Molecular Biology and Genetics** (2020-2026), Johns Hopkins School of Medicine
+
+**BS in Applied Mathematics & Molecular Biology** (2017-2020), Vanderbilt University

@@ -1,0 +1,13 @@
+---
+title: "Siqi Chen"
+---
+
+Welcome to my personal website!
+
+My name is Siqi Chen (Alice). I am a 3rd year [Biochemistry, Cellular and Molecular Biology](https://bcmb.bs.jhmi.edu) PhD student at Johns Hopkins School of Medicine. 
+
+
+Here's a photo of jellyfish I took at the National Aquarium in late October 2022. I am amazed by their incredible nervous system.
+
+![](Jellyfish.png)
+---
