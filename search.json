@@ -1,5 +1,26 @@
 [
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Siqi Chen",
+    "section": "",
+    "text": "My name is Siqi Chen (Alice). I am a 3rd year Biochemistry, Cellular and Molecular Biology PhD student at Johns Hopkins School of Medicine.\nHere’s a photo of jellyfish I took at the National Aquarium in late October 2022. I am amazed by their incredible nervous system."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About me",
+    "section": "",
+    "text": "My name is Siqi Chen. I am a 3rd year BCMB PhD candidate at the Johns Hopkins School of Medicine. I am interested in applying molecular biology and genomics tools to explore and understand gene regulatory mechanisms underlying development and human diseases.\nBefore starting my PhD, I graduated from Vanderbilt University, where I studied the molecular mechanism underlying synaptic elimination using C. elegans as a model organism in the Miller lab."
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "About me",
+    "section": "Education",
+    "text": "Education\nPh.D. in Molecular Biology and Genetics (2020-2026), Johns Hopkins School of Medicine\nBS in Applied Mathematics & Molecular Biology (2017-2020), Vanderbilt University"
+  },
+  {
     "objectID": "Example_analysis.html",
     "href": "Example_analysis.html",
     "title": "Example_analysis",
@@ -26,33 +47,5 @@
     "title": "Example_analysis",
     "section": "Functions used",
     "text": "Functions used\n\n\n\ndplyr\ntidyr\nggplot2\n\n\n\n\nmutate()\ndrop_na()\ngeom_point()\n\n\nselect()\n\ngeom_smooth()\n\n\ngroup_by()\n\ngeom_text()\n\n\narrange()\n\ngeom_boxplot()\n\n\nsummarize()"
-  },
-  {
-    "objectID": "Example_analysis.html#references",
-    "href": "Example_analysis.html#references",
-    "title": "Example_analysis",
-    "section": "References",
-    "text": "References\n\n\nBoard Games Geek. https://boardgamegeek.com/. Accessed 13 Nov. 2022.\n\n\nTidy Tuesday. R4DS Online Learning Community, Mar. 2019.\n\n\nWickham, Hadley, Romain François, et al. Dplyr: A Grammar of Data Manipulation. 2022.\n\n\nWickham, Hadley. Ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016, https://ggplot2.tidyverse.org.\n\n\nWickham, Hadley, Mara Averick, et al. “Welcome to the tidyverse.” Journal of Open Source Software, vol. 4, no. 43, 2019, p. 1686, https://doi.org/10.21105/joss.01686."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Siqi Chen",
-    "section": "",
-    "text": "My name is Siqi Chen (Alice). I am a 3rd year Biochemistry, Cellular and Molecular Biology PhD student at Johns Hopkins School of Medicine.\nHere’s a photo of jellyfish I took at the National Aquarium in late October 2022. I am amazed by their incredible nervous system."
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About me",
-    "section": "",
-    "text": "My name is Siqi Chen. I am a 3rd year BCMB PhD candidate at the Johns Hopkins School of Medicine. I am interested in applying molecular biology and genomics tools to explore and understand gene regulatory mechanisms underlying development and human diseases.\nBefore starting my PhD, I graduated from Vanderbilt University, where I studied the molecular mechanism underlying synaptic elimination using C. elegans as a model organism in the Miller lab."
-  },
-  {
-    "objectID": "about.html#education",
-    "href": "about.html#education",
-    "title": "About me",
-    "section": "Education",
-    "text": "Education\nPh.D. in Molecular Biology and Genetics (2020-2026), Johns Hopkins School of Medicine\nBS in Applied Mathematics & Molecular Biology (2017-2020), Vanderbilt University"
   }
 ]
