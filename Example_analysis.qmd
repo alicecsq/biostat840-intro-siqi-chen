@@ -8,19 +8,17 @@ csl: modern-language-association.csl
 
 ## Background
 
-![](board_games.jpg)
-[Image source: NBC News](https://www.nbcnews.com/select/shopping/best-board-games-play-quarantine-ncna1231447)
+![](board_games.jpg) [Image source: NBC News](https://www.nbcnews.com/select/shopping/best-board-games-play-quarantine-ncna1231447)
 
 ### Motivation
+
 As holiday season is approaching, there will be many occasion of gatherings with a group of friends (of various sizes). A gathering is more fun with board games, in addition to food and chatting. Here, I would like to figure out which game, from different categories (taking into considerations of personalities etc), is the most suited for hanging out with friends depending on party size, and ratings. Assuming that we're all above 21 years old.
 
-Questions to be answered:
-1) Is there a relationship between max players and playing times across board games;
-2) What are the top3 most highly rated (average) games for each of the top10 highly rated (average) game categories?
+Questions to be answered: 1) Is there a relationship between max players and playing times across board games; 2) What are the top3 most highly rated (average) games for each of the top10 highly rated (average) game categories?
 
 ### Intended audience
 
-For anyone, especially those above 21 years old, who is considering buying board games for gathering or parties. 
+For anyone, especially those above 21 years old, who is considering buying board games for gathering or parties.
 
 ### Data Origin
 
@@ -52,11 +50,9 @@ board_games <- readRDS("board_games.RDS")
 as_tibble(board_games)
 ```
 
-The data used in this analysis comes from [TidyTuesday](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-03-12). The data originally comes from the [Board Game Geek](https://boardgamegeek.com) database. Specifically, it only contains games with at least 50 ratings and for games between 1950-2016, leaving us with 10,532 games.
-Here is a [data dictionary](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-01-25/readme.md) explaining what each column name means.
+The data used in this analysis comes from [TidyTuesday](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-03-12). The data originally comes from the [Board Game Geek](https://boardgamegeek.com) database. Specifically, it only contains games with at least 50 ratings and for games between 1950-2016, leaving us with 10,532 games. Here is a [data dictionary](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-01-25/readme.md) explaining what each column name means.
 
 ## Data wrangling
-
 
 #### 1. filter to retain board games that are assigned to only one category and retain game category that is not a NA
 
@@ -71,12 +67,12 @@ filtered_board_games <- board_games %>% filter(num_category_assigned ==1) %>% dr
 # [1] 12  8 13 10  9 14  6 11  7 16  5  0 15 18  4  3 21 
 ```
 
-Filtering board games that are only assigned to one defined game category (i.e. categories without NAs), gives us a total of 1913 games, with 71 unique categories, from 1950-2016. 
-THIS IS THE _FINAL_ DATAFRAME USED FOR ALL DOWNSTREAM ANALYSES. Note also that people above 21 years old are eligible to play all games included in the datasets. 
+Filtering board games that are only assigned to one defined game category (i.e. categories without NAs), gives us a total of 1913 games, with 71 unique categories, from 1950-2016. THIS IS THE *FINAL* DATAFRAME USED FOR ALL DOWNSTREAM ANALYSES. Note also that people above 21 years old are eligible to play all games included in the datasets.
 
 #### 2. board games - relationship between max_players and playing time
 
 ##### Question 1: Is there a relationship between playing time and maximum number of players across all board games?
+
 ```{r message = FALSE, warning = FALSE}
 filtered_board_games %>% filter(max_players<=25) %>% ggplot(aes(x=max_players, y=playing_time)) + geom_point() + geom_smooth() + xlab("Maximum number of players") + ylab("Playing time (in minutes)") + ggtitle("Fig.1 Relationship between playing time and max players") + labs(subtitle="There is no clear relationship between max players and playing times across board games.", caption="Siqi Chen") + theme(
   plot.title = element_text(color = "black", size = 16, face = "bold",hjust = 0.5),
@@ -85,14 +81,14 @@ filtered_board_games %>% filter(max_players<=25) %>% ggplot(aes(x=max_players, y
         axis.title=element_text(size=12), strip.text.x = element_text(size =10 ))
 ```
 
+#### 3. Board games - category & ratings
 
-#### 3. Board games - category & ratings 
-
-::: {.callout-warning}
-For this analysis, we only retain categories that have at least 10 games. 
-::: 
+::: callout-warning
+For this analysis, we only retain categories that have at least 10 games.
+:::
 
 ##### Question 2: What are the rankings of average ratings across all categories from 1950-2016?
+
 ```{r}
 categories_at_least_10_games <- filtered_board_games %>% group_by(category) %>% summarize(total_games=n()) %>% filter(total_games>=10) 
 # Filtering out categories with less than 10 games leave us with 35 unique categories
@@ -100,8 +96,8 @@ categories_at_least_10_games <- filtered_board_games %>% group_by(category) %>% 
 categories_board_games_rating_rank <- filtered_board_games %>% filter(category %in% categories_at_least_10_games$category) %>% group_by(category) %>% summarise(mean_rating=mean(average_rating),median_rating=median(average_rating)) %>% arrange(desc(mean_rating))
 ```
 
-
 ##### Question 3: What are the three lowest and highest average rated categories of board games from 1950-2016?
+
 ```{r}
 # the top3 highest average rated board game categories from 1950-2016
 categories_board_games_rating_rank %>% head(3)
@@ -112,11 +108,10 @@ categories_board_games_rating_rank %>% tail(3)
 
 ##### Question 4: How does the average rating changes over time for the top10 overall highest average rated categories of board games from 1950-2016?
 
-::: {.callout-note}
+::: callout-note
+Let's figure out which are the top 10 highest rated categories on average from 1950-2016.
+:::
 
-Let's figure out which are the top 10 highest rated categories on average from 1950-2016. 
-
-::: 
 ```{r}
 top10_categories <- categories_board_games_rating_rank %>% head(n=10) %>% pull(category) 
 
@@ -135,8 +130,7 @@ ggplot(rating_by_category_ordered,aes(x=category, y=average_rating)) + geom_boxp
 
 ```
 
-
-Then plot the average rating of games over time from 1950-2016, stratified by categories. 
+Then plot the average rating of games over time from 1950-2016, stratified by categories.
 
 ```{r message = FALSE, warning = FALSE}
 
@@ -153,8 +147,8 @@ filtered_board_games %>%
 ) + theme(strip.text.x = element_text(size =10 ))
 ```
 
-
 #### 4. Within each board game category - max players and average_rating
+
 ```{r}
 rating_by_category_top3 <- rating_by_category %>% 
   filter(max_players<=16) %>% 
@@ -175,26 +169,25 @@ ggplot(rating_by_category_top3,aes(x=max_players, y=average_rating)) +
   
 ```
 
-
-
 ## Summary (4-6 sentences)
-1. There is no clear relationship between max players and playing times across board games. This makes sense since playing time can also depends on many other factors, e.g. complexity of the game. 
 
-2. Renaissance and Trains categories are the top2 highly rated (mean and median) categories, with an average rating above 6.7.
+1.  There is no clear relationship between max players and playing times across board games. This makes sense since playing time can also depends on many other factors, e.g. complexity of the game.
 
-3. Within each top10 highly rated (average) categories, I have figured out the top3 most highly rated (average) games (Fig.4). we can pick games, depending on people's preferences, and the number of people based on this graph.
+2.  Renaissance and Trains categories are the top2 highly rated (mean and median) categories, with an average rating above 6.7.
+
+3.  Within each top10 highly rated (average) categories, I have figured out the top3 most highly rated (average) games (Fig.4). we can pick games, depending on people's preferences, and the number of people based on this graph.
 
 ## Functions used
-| **`dplyr`**   | **`tidyr`** | **`ggplot2`**      |
-|---------------|-------------|--------------------|
-| `mutate()`    | `drop_na()` | `geom_point()`     |
-| `select()`    |             | `geom_smooth()`    |
-| `group_by()`  |             | `geom_text()`      |
-| `arrange()`   |             | `geom_boxplot()`   |
-| `summarize()` |             |                    |
+
+| **`dplyr`**   | **`tidyr`** | **`ggplot2`**    |
+|---------------|-------------|------------------|
+| `mutate()`    | `drop_na()` | `geom_point()`   |
+| `select()`    |             | `geom_smooth()`  |
+| `group_by()`  |             | `geom_text()`    |
+| `arrange()`   |             | `geom_boxplot()` |
+| `summarize()` |             |                  |
 
 ## References
+
 ::: {#refs}
 :::
-
-

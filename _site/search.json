@@ -1,52 +1,10 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Siqi Chen",
-    "section": "",
-    "text": "My name is Siqi Chen (Alice). I am a 3rd year Biochemistry, Cellular and Molecular Biology PhD student at Johns Hopkins School of Medicine.\nHere’s a photo of jellyfish I took at the National Aquarium in late October 2022. I am amazed by their incredible nervous system."
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About me",
-    "section": "",
-    "text": "My name is Siqi Chen. I am a 3rd year BCMB PhD candidate at the Johns Hopkins School of Medicine. I am interested in applying molecular biology and genomics tools to explore and understand gene regulatory mechanisms underlying development and human diseases.\nBefore starting my PhD, I graduated from Vanderbilt University, where I studied the molecular mechanism underlying synaptic elimination using C. elegans as a model organism in the Miller lab."
-  },
-  {
     "objectID": "Example_analysis.html",
     "href": "Example_analysis.html",
     "title": "Example_analysis",
     "section": "",
     "text": "Image source: NBC News\n\n\nAs holiday season is approaching, there will be many occasion of gatherings with a group of friends (of various sizes). A gathering is more fun with board games, in addition to food and chatting. Here, I would like to figure out which game, from different categories (taking into considerations of personalities etc), is the most suited for hanging out with friends depending on party size, and ratings. Assuming that we’re all above 21 years old.\nQuestions to be answered: 1) Is there a relationship between max players and playing times across board games; 2) What are the top3 most highly rated (average) games for each of the top10 highly rated (average) game categories?\n\n\n\nFor anyone, especially those above 21 years old, who is considering buying board games for gathering or parties.\n\n\n\n\nlibrary(tidytuesdayR)\n#library(here)\nlibrary(ggplot2)\nlibrary(readr)\nlibrary(tidyverse)\nlibrary(dplyr)\n#library(\"maps\")\n\n# saves data only once (not each time you knit a R Markdown)\nif(!file.exists(\"board_games.RDS\")) {\n  url_csv <- 'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-03-12/board_games.csv'\n  board_games <- readr::read_csv(url_csv)\n  \n  # save the file to RDS objects\n  saveRDS(board_games, file= \"board_games.RDS\")\n}\n\n\n\nHere are some of the libraries I used in this analysis.\n\nboard_games <- readRDS(\"board_games.RDS\")\nas_tibble(board_games)\n\n# A tibble: 10,532 × 22\n   game_id descrip…¹ image max_p…² max_p…³ min_age min_p…⁴ min_p…⁵ name  playi…⁶\n     <dbl> <chr>     <chr>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl> <chr>   <dbl>\n 1       1 Die Mach… //cf…       5     240      14       3     240 Die …     240\n 2       2 Dragonma… //cf…       4      30      12       3      30 Drag…      30\n 3       3 Part of … //cf…       4      60      10       2      30 Samu…      60\n 4       4 When you… //cf…       4      60      12       2      60 Tal …      60\n 5       5 In Acqui… //cf…       6      90      12       3      90 Acqu…      90\n 6       6 In the a… //cf…       6     240      12       2     240 Mare…     240\n 7       7 In Cathe… //cf…       2      20       8       2      20 Cath…      20\n 8       8 In this … //cf…       5     120      12       2     120 Lord…     120\n 9       9 Although… //cf…       4      90      13       2      90 El C…      90\n10      10 Elfenlan… //cf…       6      60      10       2      60 Elfe…      60\n# … with 10,522 more rows, 12 more variables: thumbnail <chr>,\n#   year_published <dbl>, artist <chr>, category <chr>, compilation <chr>,\n#   designer <chr>, expansion <chr>, family <chr>, mechanic <chr>,\n#   publisher <chr>, average_rating <dbl>, users_rated <dbl>, and abbreviated\n#   variable names ¹​description, ²​max_players, ³​max_playtime, ⁴​min_players,\n#   ⁵​min_playtime, ⁶​playing_time\n\n\nThe data used in this analysis comes from TidyTuesday. The data originally comes from the Board Game Geek database. Specifically, it only contains games with at least 50 ratings and for games between 1950-2016, leaving us with 10,532 games. Here is a data dictionary explaining what each column name means."
-  },
-  {
-    "objectID": "index.html#education",
-    "href": "index.html#education",
-    "title": "Siqi Chen (Alice)",
-    "section": "Education",
-    "text": "Education\nPh.D. in Molecular Biology and Genetics (2020 - 2026)\nJohns Hopkins School of Medicine\nBS in Molecular Biology & Applied Mathematics (2016 - 2020)\nVanderbilt University\n\nThis is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
-  },
-  {
-    "objectID": "about.html#education",
-    "href": "about.html#education",
-    "title": "About me",
-    "section": "Education",
-    "text": "Education\nPh.D. in Molecular Biology and Genetics (2020-2026), Johns Hopkins School of Medicine\nBS in Applied Mathematics & Molecular Biology (2017-2020), Vanderbilt University"
-  },
-  {
-    "objectID": "Example_analysis.html#intended-audience",
-    "href": "Example_analysis.html#intended-audience",
-    "title": "Example_analysis.qmd",
-    "section": "Intended audience",
-    "text": "Intended audience\nFor anyone, especially those above 21 years old, who is considering buying board games for gathering or parties."
-  },
-  {
-    "objectID": "Example_analysis.html#data-origin",
-    "href": "Example_analysis.html#data-origin",
-    "title": "Example_analysis.qmd",
-    "section": "Data Origin",
-    "text": "Data Origin\n\nlibrary(tidytuesdayR)\n#library(here)\nlibrary(ggplot2)\nlibrary(readr)\nlibrary(tidyverse)\nlibrary(dplyr)\n#library(\"maps\")\n\n# saves data only once (not each time you knit a R Markdown)\nif(!file.exists(\"board_games.RDS\")) {\n  url_csv <- 'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-03-12/board_games.csv'\n  board_games <- readr::read_csv(url_csv)\n  \n  # save the file to RDS objects\n  saveRDS(board_games, file= \"board_games.RDS\")\n}\n\n\n\nHere are some of the libraries I used in this analysis.\n\nboard_games <- readRDS(\"board_games.RDS\")\nas_tibble(board_games)\n\n# A tibble: 10,532 × 22\n   game_id descrip…¹ image max_p…² max_p…³ min_age min_p…⁴ min_p…⁵ name  playi…⁶\n     <dbl> <chr>     <chr>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl> <chr>   <dbl>\n 1       1 Die Mach… //cf…       5     240      14       3     240 Die …     240\n 2       2 Dragonma… //cf…       4      30      12       3      30 Drag…      30\n 3       3 Part of … //cf…       4      60      10       2      30 Samu…      60\n 4       4 When you… //cf…       4      60      12       2      60 Tal …      60\n 5       5 In Acqui… //cf…       6      90      12       3      90 Acqu…      90\n 6       6 In the a… //cf…       6     240      12       2     240 Mare…     240\n 7       7 In Cathe… //cf…       2      20       8       2      20 Cath…      20\n 8       8 In this … //cf…       5     120      12       2     120 Lord…     120\n 9       9 Although… //cf…       4      90      13       2      90 El C…      90\n10      10 Elfenlan… //cf…       6      60      10       2      60 Elfe…      60\n# … with 10,522 more rows, 12 more variables: thumbnail <chr>,\n#   year_published <dbl>, artist <chr>, category <chr>, compilation <chr>,\n#   designer <chr>, expansion <chr>, family <chr>, mechanic <chr>,\n#   publisher <chr>, average_rating <dbl>, users_rated <dbl>, and abbreviated\n#   variable names ¹​description, ²​max_players, ³​max_playtime, ⁴​min_players,\n#   ⁵​min_playtime, ⁶​playing_time\n\n\nThe data used in this analysis comes from TidyTuesday. The data originally comes from the Board Game Geek database. Specifically, it only contains games with at least 50 ratings and for games between 1950-2016, leaving us with 10,532 games. Here is a data dictionary explaining what each column name means."
   },
   {
     "objectID": "Example_analysis.html#data-wrangling",
@@ -70,31 +28,31 @@
     "text": "Functions used\n\n\n\ndplyr\ntidyr\nggplot2\n\n\n\n\nmutate()\ndrop_na()\ngeom_point()\n\n\nselect()\n\ngeom_smooth()\n\n\ngroup_by()\n\ngeom_text()\n\n\narrange()\n\ngeom_boxplot()\n\n\nsummarize()"
   },
   {
-    "objectID": "Example_analysis.html#bibligraphy-3-unique-citations",
-    "href": "Example_analysis.html#bibligraphy-3-unique-citations",
-    "title": "Example_analysis.qmd",
-    "section": "bibligraphy (>=3 unique citations)",
-    "text": "bibligraphy (>=3 unique citations)"
-  },
-  {
-    "objectID": "Example_analysis.html#bibligraphy",
-    "href": "Example_analysis.html#bibligraphy",
-    "title": "Example_analysis.qmd",
-    "section": "bibligraphy",
-    "text": "bibligraphy"
-  },
-  {
-    "objectID": "Example_analysis.html#bibliography",
-    "href": "Example_analysis.html#bibliography",
-    "title": "Example_analysis.qmd",
-    "section": "bibliography",
-    "text": "bibliography"
-  },
-  {
     "objectID": "Example_analysis.html#references",
     "href": "Example_analysis.html#references",
     "title": "Example_analysis",
     "section": "References",
     "text": "References\n\n\nBoard Games Geek. https://boardgamegeek.com/. Accessed 13 Nov. 2022.\n\n\nTidy Tuesday. R4DS Online Learning Community, Mar. 2019.\n\n\nWickham, Hadley, Romain François, et al. Dplyr: A Grammar of Data Manipulation. 2022.\n\n\nWickham, Hadley. Ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016, https://ggplot2.tidyverse.org.\n\n\nWickham, Hadley, Mara Averick, et al. “Welcome to the tidyverse.” Journal of Open Source Software, vol. 4, no. 43, 2019, p. 1686, https://doi.org/10.21105/joss.01686."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Siqi Chen",
+    "section": "",
+    "text": "Welcome to my personal website!\nMy name is Siqi Chen (Alice). I am a 3rd year Biochemistry, Cellular and Molecular Biology PhD student at Johns Hopkins School of Medicine.\nHere’s a photo of jellyfish I took at the National Aquarium in late October 2022. I am amazed by their incredible nervous system."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About me",
+    "section": "",
+    "text": "My name is Siqi Chen. I am a 3rd year BCMB PhD candidate at the Johns Hopkins School of Medicine. I am interested in applying molecular biology and genomics tools to explore and understand gene regulatory mechanisms underlying development and human diseases.\nBefore starting my PhD, I graduated from Vanderbilt University, where I studied the molecular mechanism underlying synaptic elimination using C. elegans as a model organism in the Miller lab."
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "About me",
+    "section": "Education",
+    "text": "Education\nPh.D. in Molecular Biology and Genetics (2020-2026), Johns Hopkins School of Medicine\nBS in Applied Mathematics & Molecular Biology (2017-2020), Vanderbilt University"
   }
 ]
